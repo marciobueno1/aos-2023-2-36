@@ -1,0 +1,16 @@
+{
+  "name": "express-01",
+  "version": "1.0.0",
+  "description": "Projeto Node + Express (minimalista)",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
