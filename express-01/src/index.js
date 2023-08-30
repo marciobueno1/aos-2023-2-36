@@ -1,4 +1,4 @@
-import 'dotenv/config';
+import "dotenv/config";
 
 console.log("Projeto Node + Express - 2023.2");
 
