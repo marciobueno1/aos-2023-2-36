@@ -36,6 +36,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+  req.me = users[1];
+  next();
+});
 
 app.get("/", (req, res) => {
   return res.send("Hello Express");
@@ -74,11 +78,29 @@ app.post("/messages", (req, res) => {
   const message = {
     id,
     text: req.body.text,
+    userId: req.me.id,
   };
 
   messages[id] = message;
 
   return res.send(message);
+});
+
+app.delete('/messages/:messageId', (req, res) => {
+  // const {
+  //   [req.params.messageId]: message,
+  //   ...otherMessages
+  // } = messages;
+  // messages = otherMessages;
+
+  const message = messages[req.params.messageId];
+  delete messages[req.params.messageId];
+
+  return res.send(message);
+});
+
+app.get('/session', (req, res) => {
+  return res.send(users[req.me.id]);
 });
 
 const port = process.env.PORT || 3000;
